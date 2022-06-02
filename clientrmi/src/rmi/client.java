@@ -39,13 +39,18 @@ public class client {
         System.out.println("client has connceted to server");
     
         //v = lp.checkRound();
-        lp.setFinished(connection.finished);
+        
         return lp.checkRound();
         
     }
     
     
-
+    
+    public void clearGame(String u, String ee)throws NotBoundException, MalformedURLException, RemoteException, ServerNotActiveException{
+        /*servinterface lp = (servinterface) Naming.lookup("rmi://" + u + ":" + ee + "/servinterface");
+        lp.setFinished();*/
+        System.out.println("***** ** **  ** ROUND ENDED ** ** ** ****");
+    }
     
     public static void main(String[] argv) {
 

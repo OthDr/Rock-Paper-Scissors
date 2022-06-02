@@ -49,7 +49,7 @@ public class aserveur extends UnicastRemoteObject implements servinterface {
 
             Serv.traffic.add(result);
             int last = Serv.traffic.size();
-            System.out.println("players number :" + Serv.traffic.get(last - 1));
+            System.out.println("players number :" + Serv.traffic.size());
 
         } catch (Exception e) {
             System.out.println("Error:" + e);
@@ -68,12 +68,12 @@ public class aserveur extends UnicastRemoteObject implements servinterface {
 
             int last = Serv.traffic.size();
             
-            if (last == 2) {
+            if ((last % 2) == 0) {
                 
                 char lastAction = (char) Serv.traffic.get(last - 1);
                 char beforelastAction = (char) Serv.traffic.get(last - 2);
 
-                roundAction = (char) Serv.traffic.get(last - 1);
+                //roundAction = (char) Serv.traffic.get(last - 1);
 
                 if (lastAction == 'r' && beforelastAction == 's'
                         || lastAction == 'p' && beforelastAction == 'r'
@@ -106,12 +106,10 @@ public class aserveur extends UnicastRemoteObject implements servinterface {
 
     }
     
-    public boolean setFinished(boolean finished){
-        finished = false;
-        if(finished){
-            Serv.traffic.clear();
-        }
-        return finished;
+    public void setFinished(){
+       Serv.traffic.clear();       
+       System.out.println("******************finished ==> players number: "+ Serv.traffic.size() +"******************");
+
     }
 
 }

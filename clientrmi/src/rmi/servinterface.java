@@ -16,6 +16,6 @@ import java.rmi.server.ServerNotActiveException;
 public interface servinterface extends Remote {
 public char inter (char a) throws RemoteException,ServerNotActiveException;
 public char checkRound () throws RemoteException,ServerNotActiveException;
-public boolean setFinished(boolean finished) throws RemoteException,ServerNotActiveException;
+public void setFinished() throws RemoteException,ServerNotActiveException;
 
 }

@@ -299,9 +299,7 @@ public static String adrs;
                 //
                 char valeur = player.exe_client(Action, adrs, prt);
 
-                System.out.println("waaaaaaaaaaaaw");
-
-                System.out.println("resultat est " + valeur);
+                System.out.println("action is " + valeur);
 
                 owner = Action;
                 
@@ -377,11 +375,10 @@ public static String adrs;
     }//GEN-LAST:event_PaperbtnActionPerformed
 
     private void ResultbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultbtnActionPerformed
+        
         adrs = jTextField1.getText();
         prt = jTextField2.getText();
-        char winner = '0';
-        
-        
+        char winner = '0';        
 
         int port = Integer.parseInt(prt);
         client ab = new client();
@@ -403,12 +400,15 @@ public static String adrs;
                     scoreLabel.setText("You: "+ownerScore+" VS "+"Opponent: "+opponentScore);
                     Resultbtn.setEnabled(false);
                     scoreLabel.setForeground(Color.green);
-                    finished = true;
+                    //finished = true;
+                    ab.clearGame(adrs, prt);
                     
                 }else if(winner == '1'){
-                    scoreLabel.setText("You: "+ownerScore+" VS "+"Opponent: "+opponentScore);
+                    scoreLabel.setForeground(Color.gray);
+                    scoreLabel.setText("You both did same move");
                     Resultbtn.setEnabled(false);
-                    finished = true;
+                    //finished = true;
+                    ab.clearGame(adrs, prt);
                     
                 }
                 else{
@@ -416,7 +416,8 @@ public static String adrs;
                     scoreLabel.setText("You: "+ownerScore+" VS "+"Opponent: "+opponentScore);
                     Resultbtn.setEnabled(false);                    
                     scoreLabel.setForeground(Color.red);
-                    finished = true;
+                    //finished = true;
+                    ab.clearGame(adrs, prt);
                 }
                 
                 Rockbtn.setEnabled(true);
@@ -429,9 +430,6 @@ public static String adrs;
                 //waitLabel.setText("wait for other player");
                 scoreLabel.setText("wait for the other player");
             }
-
-            
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(new JFrame(), "IL Y A UNE ERREUR OU BIEN LE SERVEUR N'EST PAS CONNECTER ");
             System.out.println("w  " + e);
